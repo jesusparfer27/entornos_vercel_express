@@ -1,8 +1,10 @@
 import dotenv from 'dotenv';
 
-const result = dotenv.config();
-if (result.error) {
-    throw new Error("Error al cargar las variables de entorno: " + result.error);
+if (process.env.NODE_ENV !== 'production') {
+    const result = dotenv.config();
+    if (result.error) {
+        throw new Error("Error al cargar las variables de entorno: " + result.error);
+    }
 }
 
 export const HOST = process.env.HOST || "http://localhost";
