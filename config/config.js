@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 
-if (process.env.NODE_ENV !== 'production') {
+// Solo cargamos dotenv si estamos en desarrollo o pruebas
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     const result = dotenv.config();
     if (result.error) {
         throw new Error("Error al cargar las variables de entorno: " + result.error);
