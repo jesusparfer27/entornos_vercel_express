@@ -2,13 +2,17 @@ import express from 'express'
 import cors from 'cors'
 import { HOST, PORT } from './config/config.js'
 import apiRoutes from './routes/index.routes.js'
+import path from 'path'
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static('public'))
+// app.use(express.static('public'))
 // app.use(express.static(path.join(__dirname, 'public')));
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get('/', (req, res) => {
     try {
